@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Mother's Day to Teachers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+      background-size: 600% 600%;
+      animation: bgAnimation 30s ease infinite;
+      position: relative;
+    }
+
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page {
+      display: none;
+      height: 100%;
+      width: 100%;
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px #00000030;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px #00000030;
+    }
+
+    #countdown {
+      font-size: 5em;
+      font-weight: bold;
+      margin: 30px 0;
+      text-shadow: 2px 2px 5px #00000060;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background-color: #fff;
+      color: #bb377d;
+      cursor: pointer;
+      transition: 0.3s ease;
+      display: none;
+    }
+
+    button:hover {
+      background-color: #ffe2f0;
+    }
+
+    .roles-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 900px;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .role {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1em;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2.5em;
+      opacity: 0.25;
+      animation: floatEmoji 25s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes floatEmoji {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-150vh) translateX(30px) rotate(360deg);
+      }
+    }
+
+    .credit {
+      margin-top: 40px;
+      font-size: 1.5em;
+      color: #ffb6c1;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Emojis -->
+  <script>
+    const emojis = ['💖', '🌸', '💫', '🌟', '💐', '❤️', '✨'];
+    for (let i = 0; i < 30; i++) {
+      const span = document.createElement("div");
+      span.className = "emoji";
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.animationDuration = (20 + Math.random() * 10) + "s";
+      span.style.fontSize = (2 + Math.random() * 2) + "em";
+      document.body.appendChild(span);
+    }
+  </script>
+
+  <!-- Page 1 -->
+  <div id="page1" class="page active">
+    <h1>To every Mam who became our second Mom...</h1>
+    <p>Guiding, teaching, caring — you're more than a teacher. You’re a light in our lives.</p>
+    <div id="countdown">5</div>
+    <button id="goButton" onclick="goToPage2()">Celebrate Teachers this Mother's Day 💐</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2" class="page">
+    <h1>Happy Mother's Day to My favourite Staff💖</h1>
+    <p>
+      Teachers are the moms we meet beyond our home —<br>
+      shaping minds, comforting hearts, standing by us.<br>
+      Thank you for being our Mam and our Mom in one.
+    </p>
+    <div class="roles-container">
+      <div class="role">Mentor</div>
+      <div class="role">Guide</div>
+      <div class="role">Friend</div>
+      <div class="role">Mother Figure</div>
+      <div class="role">Supporter</div>
+      <div class="role">Listener</div>
+      <div class="role">Encourager</div>
+      <div class="role">Role Model</div>
+      <div class="role">Inspiration</div>
+      <div class="role">Problem Solver</div>
+      <div class="role">Dream Builder</div>
+      <div class="role">Protector</div>
+      <div class="role">Comforter</div>
+    </div>
+    <div class="credit">-by ANAMEKA</div>
+  </div>
+
+  <script>
+    let countdownNum = 5;
+    const countdownEl = document.getElementById("countdown");
+    const buttonEl = document.getElementById("goButton");
+
+    const interval = setInterval(() => {
+      countdownNum--;
+      countdownEl.textContent = countdownNum;
+      if (countdownNum === 0) {
+        clearInterval(interval);
+        countdownEl.style.display = "none";
+        buttonEl.style.display = "inline-block";
+      }
+    }, 1000);
+
+    function goToPage2() {
+      document.getElementById("page1").classList.remove("active");
+      document.getElementById("page2").classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
